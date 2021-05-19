@@ -164,7 +164,7 @@ class Page2(Page):
         Page.__init__(self, *args, **kwargs)
         fig = Figure(figsize=(5, 4), dpi=100)
         t = pd.read_csv('EAHPdata/dataset0.csv')
-        fig.suptitle('Memory Utilization and Energy Utilization')
+        fig.suptitle('Memory Utilization')
         fig.add_subplot(421).plot(t.iloc[:,3])
         fig.add_subplot(421).set_title("Model 1: Memory")
         fig.subplots_adjust(hspace=.2)
@@ -253,14 +253,7 @@ def func3():
         os.makedirs('EAHPdata')
     #os.system('mkdir EAHPdata')
     print("Scanning Mem started!...")
-    interrupted=False
-    while True:
-        os.system('powertop -C EAHPdata/energy.csv -i 10')
-        if interrupted:
-            break
-    fw.close()
-    count+=1
-    print ('To stop background measuring of energy. Press CTRL+C')
+    print ('To stop background measuring. Press CTRL+C')
 
 def rec():
     pr1 = Process(target = func1)
